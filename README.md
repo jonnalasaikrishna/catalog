@@ -17,11 +17,12 @@ Choose EC2 and Launch Instance with appropriate settings.
 Check for instance IPv4 public `IP - 3.87.52.54`
 we can download a .pem file and connect with following command
 `ssh -i linux_server_config.pem ubuntu@3.91.252.200`
-
 22 is Port by Default,Later we need to change it to 2200 as per the udacity-linux-server-configuration rubrics.
 Secure the server
 ## Step 2: Update and upgrade installed packages
+
 `sudo apt-get update`
+
 `sudo apt-get upgrade`
 ## Step 3: Change the SSH port from 22 to 2200
 Edit the /etc/ssh/sshd_config file: `sudo vi /etc/ssh/sshd_config`.
@@ -33,13 +34,13 @@ To check port 2200 wether working or not by `ssh -i linux_server_config.pem ubun
 ## Step 4: Configure the Uncomplicated Firewall (UFW)
 Configure the default firewall for Ubuntu to only allow incoming connections for SSH (port 2200), HTTP (port 80), and NTP (port 123).
 
-`sudo ufw status`                 # The UFW should be inactive.
-`sudo ufw default deny incoming`  # Deny any incoming traffic.
-`sudo ufw default allow outgoing`  # Enable outgoing traffic.
-`sudo ufw allow 2200/tcp`          # Allow incoming tcp packets on port 2200.
-`sudo ufw allow www`               # Allow HTTP traffic in.
-`sudo ufw allow 123/udp`          # Allow incoming udp packets on port 123.
-`sudo ufw deny 22`                 # Deny tcp and udp packets on port 53.
+`sudo ufw status                # The UFW should be inactive.
+sudo ufw default deny incoming  # Deny any incoming traffic.
+sudo ufw default allow outgoing  # Enable outgoing traffic.
+sudo ufw allow 2200/tcp          # Allow incoming tcp packets on port 2200.
+sudo ufw allow www               # Allow HTTP traffic in.
+sudo ufw allow 123/udp          # Allow incoming udp packets on port 123.
+sudo ufw deny 22    # Deny tcp and udp packets on port 53.`
 Turn UFW on: sudo ufw enable. The output should be like this:
 
 Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
@@ -48,7 +49,7 @@ Check the status of UFW to list current roles: sudo ufw status. The output shoul
 
 Status: active
 
-To                         Action      From
+`To                         Action      From
 --                         ------      ----
 2200/tcp                   ALLOW       Anywhere                  
 80/tcp                     ALLOW       Anywhere                  
@@ -57,7 +58,7 @@ To                         Action      From
 2200/tcp (v6)              ALLOW       Anywhere (v6)             
 80/tcp (v6)                ALLOW       Anywhere (v6)             
 123/udp (v6)               ALLOW       Anywhere (v6)             
-22 (v6)                    DENY        Anywhere (v6)
+22 (v6)                    DENY        Anywhere (v6)`
 Give grader access
 ## Step 5: Create a new user account named grader
 While logged in as ubuntu, add user: `sudo adduser grader`.
@@ -98,17 +99,29 @@ My project is built with Python 3. So, I need to install the Python 3 mod_wsgi p
 `sudo apt-get install libapache2-mod-wsgi-py3`.
 Enable mod_wsgi using: `sudo a2enmod wsgi`.
 ## Step 10: Install and configure PostgreSQL
+
 `sudo apt-get install libpq-dev python-dev`
+
 `sudo apt-get install postgresql postgresql-contrib`
+
 `sudo su - postgres`
+
 `psql`
+
 `CREATE USER catalog WITH PASSWORD 'catalog';`
+
 `ALTER USER catalog CREATEDB;`
+
 `CREATE DATABASE catalog WITH OWNER catalog;`
+
 `\c catalog`
+
 `REVOKE ALL ON SCHEMA public FROM public;`
+
 `GRANT ALL ON SCHEMA public TO catalog;`
+
 `\q`
+
 `exit`
 Switch back to the grader user: `exit`.
 ## Step 11: `Install git`
@@ -205,6 +218,6 @@ step 13.5: If you want to see errors that occur in by using the command
 `sudo tail /var/log/apache2/error.log'
 Step 13.6: Launch the Web Application
 Restart Apache again: sudo service apache2 restart.
-Open your browser to http://3.91.252.200 or http://ec2-3-91-252-200.compute-1.amazonaws.com.
+Open your browser to http://3.91.252.200 or http://ec2-3-91-252-200.compute-1.amazonaws.com.`
 ## step 14:Enable automatic (security) updates
 `sudo apt-get dist-upgrade`
