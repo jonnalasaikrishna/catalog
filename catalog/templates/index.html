@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Roles</title>
+<style type="text/css">
+body{
+		background-color: white;
+		text-align: center;
+	}
+	.section{
+		width: 200px;
+		background-color: white;
+		border-radius: 5px; 
+		margin: 20px;
+		padding: 5px;
+		right: 10%;
+		border-color: black;
+		border: 3px solid;
+	}
+	
+</style>
+</head>
+<body>
+	<div align="center">
+<div class='section'>
+  
+ {% if 'username' not in session %}
+    
+    <a href="{{ url_for('showlogin') }}">Login</a> 
+    {% else %}
+    <br><a href="{{ url_for('GDisConnect') }}">Logout</a> 
+    {% endif %}
+    </div></div>
+</body>
+</html>

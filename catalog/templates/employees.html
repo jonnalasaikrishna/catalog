@@ -1,0 +1,47 @@
+<html>
+	
+<head>
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='dec.css') }}">
+
+{% include "index.html" %}
+	</head>
+	<center>
+	<body class="bg-image-cover">
+		<div class = 'pane'>
+		
+		{% if 'username' not in session %}
+{% for i in e %}
+<h3>{{i.name}}</h3>
+	{% endfor %}
+{% else %}
+		<h1>{{ r.rolename }}</h1>
+
+
+		<a href = '{{url_for('newemployees', role_id = r.role_id, emp_id=e.emp_id)}}'><h2 class="button">Create employee</h2></a>
+	</br></br>
+    
+		{% for i in e %}
+		<h3>{{i.name}}</h3>
+	
+	
+	
+		<a href='{{url_for('editemployee', role_id = r.role_id , emp_id = i.emp_id ) }}'><p class="button1">Edit</p></a>
+	</br>
+	<a href='{{url_for('deleteemployee', role_id = r.role_id, emp_id = i.emp_id ) }}'><p class="button1">Delete<p></a>
+</br>
+</br>
+
+		{% endfor %}
+
+
+
+		{% endif %}
+
+		</br></br>
+
+	
+		</div>
+	</body>
+</center>
+</html>

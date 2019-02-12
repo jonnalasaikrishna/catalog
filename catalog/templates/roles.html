@@ -1,0 +1,48 @@
+<html>
+
+<head>
+
+	<p align="right">{% include "index.html" %}</p>
+
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='dec.css') }}">	
+	</head>
+
+<body  class="bg-image-cover">
+<div class = 'pane'>
+<h1>Roles</h1>
+<br>
+<br>
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        
+        {% endif %}
+    {% endwith %}
+
+{% if 'username' not in session %}
+{% for i in r %}
+<a href = "{{url_for('showemployees', role_id = i.role_id)}}" class="button">
+<h2>{{i.rolename}}</h2></a>
+
+	{% endfor %}
+{% else %}
+<a href = "{{url_for('newrole', role_id = r.role_id )}}"><h1>Create new Role</h1></a>
+{% for i in r %}
+
+<a href = "{{url_for('showemployees', role_id=i.role_id)}}"> <h3 class="button">{{i.rolename}}</h3></a>
+
+<h3><a href = "{{url_for('editrole',role_id = i.role_id)}}">Edit Role</a></h3>
+
+<h3> <a href = "{{url_for('deleterole',role_id = i.role_id)}}">Delete Role</a> </h3>
+
+{% endfor %}
+{% endif %}
+
+</div>
+</body>
+</html>
