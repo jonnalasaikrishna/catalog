@@ -1,4 +1,4 @@
-# catalog
+# Catalog
 # Linux Server Configuration
 ### This is the final project for Udacity's Full Stack Web Developer Nanodegree.
 
@@ -8,7 +8,7 @@ The Linux distribution is Ubuntu 16.04 LTS.
 The virtual private server is Amazon Lighsail.
 The web application is my Item Catalog project created earlier in this Nanodegree program.
 The database server is `PostgreSQL`.
-You can visit `http://3.91.252.200/ or http://ec2-3-91-252-200.compute-1.amazonaws.com/` for the website deployed.
+You can visit `(http://3.91.252.200/ or http://ec2-3-91-252-200.compute-1.amazonaws.com/)` for the website deployed.
 
 Get a server
 ## Step 1: Start a new Ubuntu Linux server instance on Amazon EC2
@@ -141,8 +141,8 @@ engine = create_engine('postgresql://catalog:catalog@localhost/catalog')`
 Go to Google Cloud Plateform.
 Click APIs & services on left menu.
 Click Credentials.
-Create an OAuth Client ID (under the Credentials tab), and add `http://3.91.252.200.xip.io`and `http://ec2-3-91-252-200.compute-1.amazonaws.com/` as authorized JavaScript origins.
-Add `http://3.91.252.200.xip.io/login,http://3.91.252.200.xip.io/gconnect,http://3.91.252.200.xip.io/`callback as authorized redirect URI.
+Create an OAuth Client ID (under the Credentials tab), and add `)http://3.91.252.200.xip.io)`and `(http://ec2-3-91-252-200.compute-1.amazonaws.com/)` as authorized JavaScript origins.
+Add `(http://3.91.252.200.xip.io/login,http://3.91.252.200.xip.io/gconnect,http://3.91.252.200.xip.io/)`callback as authorized redirect URI.
 Download the corresponding JSON file, open it and copy the contents.
 Open `/var/www/catalog/catalog/client_secrets.json` and paste the previous contents into the this file.
 Replace the client ID templates/login.html file in the project directory.
@@ -154,13 +154,21 @@ Create the virtual environment: `sudo virtualenv -p python3 venv`.
 Change the ownership to grader with: `sudo chown -R grader:grader venv/`.
 Activate the new environment: `. venv/bin/activate`.
 Install the following dependencies:
+
 `pip install httplib2`
+
 `pip install requests`
+
 `pip install --upgrade oauth2client`
+
 `pip install sqlalchemy`
+
 `pip install flask`
+
 `sudo apt-get install libpq-dev`
+
 `pip install psycopg2-binary`
+
 ## Step 13.2: Set up and enable a virtual host
 Configure and enable a new virtual host
 
@@ -218,6 +226,6 @@ step 13.5: If you want to see errors that occur in by using the command
 `sudo tail /var/log/apache2/error.log'
 Step 13.6: Launch the Web Application
 Restart Apache again: sudo service apache2 restart.
-Open your browser to http://3.91.252.200 or http://ec2-3-91-252-200.compute-1.amazonaws.com.`
+Open your browser to (http://3.91.252.200 or http://ec2-3-91-252-200.compute-1.amazonaws.com.)`
 ## step 14:Enable automatic (security) updates
 `sudo apt-get dist-upgrade`
